@@ -1,48 +1,36 @@
-import { ChakraProvider, Td } from '@chakra-ui/react'
-import VirtualTable from './Virtual'
+import { ChakraProvider, Heading } from '@chakra-ui/react'
+import Rowmance from './Rowmance'
+import TestTable from './TestTable'
+import LongRowmance from './LongRowmance'
+import TestCells from './TestCells'
+import VirtualTable from './virtual-table'
 
-function TestCells(props: { row: { name: string, email: string } }) {
-  return (
-    <>
-      <Td>{props.row.name}</Td>
-      <Td>{props.row.email}</Td>
-    </>
-  )
-}
-
-function generateRows(count: number) {
-  const rows = Array.from({ length: count }, (_, i) => {
+export default function App() {
+  const rows = Array.from({ length: 10000 }, (_, i) => {
     return {
       name: `Item ${i + 1}`,
       email: `Email ${i + 1}`
     }
   })
-  return rows
-}
-
-
-export default function App() {
-  const rows = generateRows(1000)
   return (
     <ChakraProvider>
-      {/* <Table>
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Email</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <Tr>
-            <Td>Dorothy Parker</Td>
-            <Td>dorothy@parker.com</Td>
-          </Tr>
-        </Tbody>
-      </Table> */}
-      <VirtualTable
-        rows={rows}
+      <Heading>Table</Heading>
+      <TestTable />
+      <Heading>Rowmance</Heading>
+      <Rowmance
+        data={[...rows]}
         CellsView={TestCells}
       />
+      {/* <Heading>Long Rowmance</Heading>
+      <LongRowmance
+        data={[...rows]}
+        CellsView={TestCells}
+      />
+      <Heading>Virtual Table</Heading>
+      <VirtualTable
+        rows={[...rows]}
+        CellsView={TestCells}
+      /> */}
     </ChakraProvider>
   )
 }

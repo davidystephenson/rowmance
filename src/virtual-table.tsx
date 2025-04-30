@@ -8,13 +8,13 @@ export default function VirtualTable<Row> (props: {
   CellsView: (props: { row: Row }) => JSX.Element
   rows: Row[]
 }): JSX.Element {
-  const Scroller: TableComponents['Scroller'] = forwardRef<HTMLDivElement>((props, ref) => {
+  const Scroller: TableComponents['Scroller'] = forwardRef((props, ref) => {
     return <Box {...props} ref={ref} />
   })
   const tableComponents: TableComponents<Row> = {
     Scroller,
     Table,
-    TableBody: forwardRef<HTMLTableSectionElement>((props, ref) => <Tbody {...props} ref={ref} />),
+    TableBody: forwardRef((props, ref) => <Tbody {...props} ref={ref} />),
     TableHead: Thead,
     TableRow: Tr
   }
