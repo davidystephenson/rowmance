@@ -1,34 +1,34 @@
 import contextCreator from "context-creator";
-import { RomanceProviderProps } from "./types";
+import { RowmanceProviderProps } from "./types";
 import { useRef, useState, useEffect, ChangeEvent, useCallback, useMemo } from "react";
-import { useHotkeys } from "react-hotkeys-hook";
 import { IconButton, Th } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 
 const rowmanceContext = contextCreator({
   name: 'rowmance',
-  useValue: (props: RomanceProviderProps) => {
+  useValue: (props: RowmanceProviderProps) => {
     const inputRef = useRef<HTMLInputElement>(null)
     const [autoFocus, setAutoFocus] = useState(true)
     const [query, setQuery] = useState('')
     const [focused, setFocused] = useState(false)
-    useHotkeys('ctrl+f', (event) => {
-      event?.preventDefault()
-      inputRef.current?.focus()
-    })
+
     useEffect(() => {
       inputRef.current?.blur()
       setAutoFocus(false)
     }, [])
     const queried = useMemo(() => query.length > 0, [query])
-    const { columns, filter } = props
+    const { crush, columns, filter } = props
     const IconButtonView = props.IconButton ?? IconButton
+    console.log('props.Input', props.Input)
     const InputView = props.Input ?? Input
     const ThView = props.Th ?? Th
     const clearQuery = useCallback(() => {
       setQuery('')
       filter({ query: undefined })
     }, [filter])
+    const focus = useCallback(() => {
+      inputRef.current?.focus()
+    }, [])
     const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLInputElement>): void => {
       if (event.key === 'Escape') {
         setAutoFocus(false)
@@ -54,8 +54,10 @@ const rowmanceContext = contextCreator({
       autoFocus,
       clearQuery,
       columns,
+      crush,
       inputRef,
       filter,
+      focus,
       handleBlur,
       handleFocus,
       handleKeyDown,
@@ -70,8 +72,10 @@ const rowmanceContext = contextCreator({
       autoFocus,
       clearQuery,
       columns,
+      crush,
       inputRef,
       filter,
+      focus,
       handleBlur,
       handleFocus,
       handleKeyDown,

@@ -1,24 +1,39 @@
 import { ChakraProvider, extendTheme, ThemeConfig, Heading } from '@chakra-ui/react'
 import Rowmance from './Rowmance'
 import TestTable from './TestTable'
-import LongRowmance from './LongRowmance'
 import TestCells from './TestCells'
-import VirtualTable from './virtual-table'
 import { TableVirtuoso } from 'react-virtuoso'
 import ColorMode from './ColorMode'
-
+import { useState } from 'react'
+import LongRowmance from './LongRowmance'
+import ThemeTable from './ThemeTable'
+import ThemeInput from './ThemeInput'
 const config: ThemeConfig = {
   initialColorMode: 'system'
 }
 const theme = extendTheme({ config })
 
+const rows = Array.from({ length: 10000 }, (_, i) => {
+  return {
+    name: `Item ${i + 1}`,
+    email: `Email ${i + 1}`
+  }
+})
+
 export default function App() {
-  const rows = Array.from({ length: 10000 }, (_, i) => {
-    return {
-      name: `Item ${i + 1}`,
-      email: `Email ${i + 1}`
-    }
-  })
+  const [filtered, setFiltered] = useState(rows)
+  function filter(props: {
+    query?: string,
+  }) {
+    const filtered = rows.filter(row => {
+      if (!props.query) {
+        return true
+      }
+      return row.name.includes(props.query)
+    })
+    setFiltered(filtered)
+  }
+
   return (
     <ChakraProvider theme={theme}>
       <ColorMode />
@@ -27,35 +42,39 @@ export default function App() {
       <Heading>Rowmance</Heading>
       <Rowmance
         columns={['Name', 'Email']}
-        data={[...rows]}
-        filter={() => {}}
+        data={filtered}
+        filter={filter}
         Cells={TestCells}
+        style={{ height: '300px' }}
+        Input={ThemeInput}
+        crush
       />
-      <Heading>Long Rowmance</Heading>
+      <Heading>LongRowmance</Heading>
       <LongRowmance
-        data={[...rows]}
-        CellsView={TestCells}
+        columns={['Name', 'Email']}
+        data={filtered}
+        filter={filter}
+        Cells={TestCells}
+        style={{ height: '300px' }}
+        Input={ThemeInput}
+        Table={ThemeTable}
       />
-      <Heading>Virtual Table</Heading>
-      <VirtualTable
-        rows={[...rows]}
-        CellsView={TestCells}
-      />
+
       <Heading>TableVirtuoso</Heading>
-      <TableVirtuoso
-        style={{ height: '100%' }}
-        // useWindowScroll
-        data={Array.from({ length: 100 }, (_, index) => ({
-          name: `User ${index}`,
-          description: `${index} description`
-        }))}
-        itemContent={(index, user) => (
-          <>
-            <td style={{ width: 150 }}>{user.name}</td>
-            <td>{user.description}</td>
-          </>
-        )}
-      />
+      <div style={{ background: 'red', height: '300px' }}>
+        <TableVirtuoso
+          data={Array.from({ length: 100 }, (_, index) => ({
+            name: `User ${index}`,
+            description: `${index} description`
+          }))}
+          itemContent={(_, user) => (
+            <>
+              <td style={{ width: 150 }}>{user.name}</td>
+              <td>{user.description}</td>
+            </>
+          )}
+        />
+      </div>
     </ChakraProvider>
   )
 }

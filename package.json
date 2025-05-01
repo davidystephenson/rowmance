@@ -1,13 +1,47 @@
 {
   "name": "rowmance",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "build": "tsc -b && vite build && npx tsup",
     "preview": "vite preview"
+  },
+  "keywords": [
+    "react",
+    "table",
+    "chakra-ui",
+    "virtualization",
+    "components",
+    "ui",
+    "library",
+    "frontend",
+    "search",
+    "filter"
+  ],
+  "author": {
+    "name": "David Y. Stephenson",
+    "email": "david@davidystephenson.com"
+  },
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidystephenson/rowmance.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davidystephenson/rowmance/issues"
+  },
+  "homepage": "https://github.com/davidystephenson/rowmance#readme",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.10.7",
@@ -15,8 +49,6 @@
     "@emotion/styled": "^11.14.0",
     "context-creator": "^0.1.23",
     "framer-motion": "^12.9.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "react-hotkeys-hook": "^5.0.1",
     "react-icons": "^5.5.0",
     "react-virtuoso": "^4.12.6"
@@ -31,6 +63,7 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "ts-standard": "^12.0.2",
+    "tsup": "^8.4.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.26.1",
     "vite": "^6.3.1"

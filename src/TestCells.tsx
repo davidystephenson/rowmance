@@ -6,7 +6,7 @@ export default function TestCells(props: {
   return (
     <>
       <Td>{props.row.name}</Td>
-      <Td>{props.row.email}</Td>
+      <Td whiteSpace='nowrap'>{props.row.email}</Td>
     </>
   )
 }

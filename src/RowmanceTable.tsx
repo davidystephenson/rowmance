@@ -3,10 +3,10 @@
 import { TableComponents, TableVirtuoso } from 'react-virtuoso'
 import { Box, Tr, Tbody, Table, Thead } from '@chakra-ui/react'
 import { forwardRef, JSX } from 'react'
-import RomanceThead from './RowmanceThead'
-import { RomanceTableProps } from './types'
+import RowmanceThead from './RowmanceThead'
+import { RowmanceTableProps } from './types'
 
-export default function RowmanceTable <Row> (props: RomanceTableProps<Row>): JSX.Element {
+export default function RowmanceTable<Row>(props: RowmanceTableProps<Row>): JSX.Element {
   const {
     Cells: CellsProp,
     Scroller: ScrollerProp,
@@ -28,7 +28,7 @@ export default function RowmanceTable <Row> (props: RomanceTableProps<Row>): JSX
     return <TableBodyView {...props} ref={ref} />
   })
   const TableHeadForward: TableComponents['TableHead'] = forwardRef((props, ref) => {
-    return <RomanceThead TableHead={TableHeadView} {...props} ref={ref} />
+    return <RowmanceThead TableHead={TableHeadView} {...props} ref={ref} />
   })
   function itemContent(index: number, row: Row) {
     return <CellsProp index={index} row={row} />
@@ -43,7 +43,7 @@ export default function RowmanceTable <Row> (props: RomanceTableProps<Row>): JSX
   return (
     <TableVirtuoso
       components={tableComponents}
-      useWindowScroll
+      // useWindowScroll
       itemContent={itemContent}
       {...rest}
     />

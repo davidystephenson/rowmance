@@ -2,7 +2,7 @@ import { ComponentType, JSX, ReactNode } from "react"
 import { ContextProp, TableVirtuosoProps, ItemProps, TableProps, ScrollerProps, TableBodyProps } from "react-virtuoso"
 import { IconButtonProps, TableHeadProps, InputProps, TableColumnHeaderProps } from "@chakra-ui/react"
 
-export type RomanceTableProps <Row> = {
+export type RowmanceTableProps <Row> = {
   Cells: (props: { index: number, row: Row }) => JSX.Element
   data: Row[]
   Scroller?: ComponentType<ScrollerProps>
@@ -12,16 +12,17 @@ export type RomanceTableProps <Row> = {
   TableRow?: ComponentType<ItemProps<Row> & ContextProp<unknown>>
 } & TableVirtuosoProps<Row, unknown>
 
-export type RomanceProviderProps = {
+export type RowmanceProviderProps = {
   columns: ReactNode[]
+  crush?: boolean
   filter: (props: { query?: string | undefined }) => void
   IconButton?: ComponentType<IconButtonProps>
   Input?: ComponentType<InputProps>
   Th?: ComponentType<TableColumnHeaderProps>
 }
 
-export type RomanceProps <Row> = RomanceTableProps<Row> & RomanceProviderProps
+export type RowmanceProps <Row> = RowmanceTableProps<Row> & RowmanceProviderProps
 
-export type RomanceTheadProps = TableHeadProps & {
+export type RowmanceTheadProps = TableHeadProps & {
   TableHead?: ComponentType<TableHeadProps & ContextProp<unknown>> 
 } & ContextProp<unknown>

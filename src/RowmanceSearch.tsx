@@ -1,14 +1,15 @@
 import { JSX } from 'react'
 import rowmanceContext from './rowmanceContext'
 import { FormControl, InputGroup, InputRightElement } from '@chakra-ui/react'
-import RomanceClear from './RomanceClear'
+import RowmanceClear from './RowmanceClear'
 
-export default function TableSearchView(): JSX.Element {
+export default function RowmanceSearch(): JSX.Element {
   const rowmance = rowmanceContext.use()
+  console.log('rowmance.Input', rowmance.Input)
   return (
     <FormControl>
       <InputGroup>
-        <rowmance.Input variant='flushed'
+        <rowmance.Input
           autoFocus={rowmance.autoFocus}
           onBlur={rowmance.handleBlur}
           onFocus={rowmance.handleFocus}
@@ -19,7 +20,7 @@ export default function TableSearchView(): JSX.Element {
           value={rowmance.query}
         />
         <InputRightElement w='fit-content'>
-          <RomanceClear />
+          <RowmanceClear />
         </InputRightElement>
       </InputGroup>
     </FormControl>

@@ -1,16 +1,17 @@
 import { JSX } from 'react'
-import TableSearchView from './RomanceSearch'
+import RowmanceSearch from './RowmanceSearch'
 import TableColumnsView from './RowmanceColumns'
 import rowmanceContext from './rowmanceContext'
 import { Tr } from '@chakra-ui/react'
 
 export default function FirstRowmance (): JSX.Element {
   const rowmance = rowmanceContext.use()
+  const crush = rowmance.crush ? { py: '0' } : {}
   return (
     <>
       <Tr>
-        <rowmance.Th py='0' colSpan={rowmance.columns.length}>
-          <TableSearchView />
+        <rowmance.Th colSpan={rowmance.columns.length} {...crush}>
+          <RowmanceSearch />
         </rowmance.Th>
       </Tr>
       <Tr>

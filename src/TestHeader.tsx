@@ -1,16 +1,16 @@
 import { Tr } from "@chakra-ui/react"
-import RomanceTh from "./RomanceTh"
+import RowmanceTh from "./RowmanceTh"
 
 export default function TestHeader() {
   return (
     <>
       <Tr>
-        <RomanceTh>Name</RomanceTh>
-        <RomanceTh>Email</RomanceTh>
+        <RowmanceTh>Name</RowmanceTh>
+        <RowmanceTh>Email</RowmanceTh>
       </Tr>
       <Tr>
-        <RomanceTh>Name</RomanceTh>
-        <RomanceTh>Email</RomanceTh>
+        <RowmanceTh>Name</RowmanceTh>
+        <RowmanceTh>Email</RowmanceTh>
       </Tr>
     </>
   )

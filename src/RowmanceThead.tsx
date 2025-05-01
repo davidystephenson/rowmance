@@ -1,9 +1,9 @@
 import { Thead, useColorModeValue } from '@chakra-ui/react'
 import { forwardRef } from 'react'
-import { RomanceTheadProps } from './types'
+import { RowmanceTheadProps } from './types'
 
-const RomanceThead = forwardRef<
-  HTMLTableSectionElement, RomanceTheadProps
+const RowmanceThead = forwardRef<
+  HTMLTableSectionElement, RowmanceTheadProps
 >((props, ref) => {
   const { TableHead, ...rest } = props
   const TableHeadView = TableHead ?? Thead
@@ -20,4 +20,4 @@ const RomanceThead = forwardRef<
     />
   )
 })
-export default RomanceThead
+export default RowmanceThead
