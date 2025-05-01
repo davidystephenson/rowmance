@@ -1,27 +1,21 @@
-import { TableHeadProps, Thead, useColorModeValue } from '@chakra-ui/react'
-import { ComponentType, forwardRef } from 'react'
-import { ContextProp } from 'react-virtuoso'
+import { JSX } from 'react'
+import TableSearchView from './RomanceSearch'
+import TableColumnsView from './RowmanceColumns'
+import rowmanceContext from './rowmanceContext'
+import { Tr } from '@chakra-ui/react'
 
-type FirstRowmanceProps = TableHeadProps & {
-  TableHead?: ComponentType<TableHeadProps & ContextProp<unknown>> 
-} & ContextProp<unknown>
-
-const FirstRowmance = forwardRef<
-  HTMLTableSectionElement, FirstRowmanceProps
->((props, ref) => {
-  const { TableHead, ...rest } = props
-  const TableHeadView = TableHead ?? Thead
-  const borderColor = useColorModeValue('700', '100')
-  const innerShadow = `inset 0px 0px 0px 10000px var(--chakra-colors-chakra-body-bg)`
-  const outerShadow = `0 0.8px 0.8px -0.8px var(--chakra-colors-gray-${borderColor})`
-  const boxShadow = `${innerShadow}, ${outerShadow}`
+export default function FirstRowmance (): JSX.Element {
+  const rowmance = rowmanceContext.use()
   return (
-    <TableHeadView
-      boxShadow={boxShadow}
-      zIndex='1 !important'
-      {...rest}
-      ref={ref}
-    />
+    <>
+      <Tr>
+        <rowmance.Th py='0' colSpan={rowmance.columns.length}>
+          <TableSearchView />
+        </rowmance.Th>
+      </Tr>
+      <Tr>
+        <TableColumnsView />
+      </Tr>
+    </>
   )
-})
-export default FirstRowmance
+}

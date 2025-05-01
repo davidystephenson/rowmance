@@ -5,7 +5,6 @@ import LongRowmance from './LongRowmance'
 import TestCells from './TestCells'
 import VirtualTable from './virtual-table'
 import { TableVirtuoso } from 'react-virtuoso'
-import TestHeader from './TestHeader'
 import ColorMode from './ColorMode'
 
 const config: ThemeConfig = {
@@ -27,8 +26,9 @@ export default function App() {
       <TestTable />
       <Heading>Rowmance</Heading>
       <Rowmance
+        columns={['Name', 'Email']}
         data={[...rows]}
-        fixedHeaderContent={TestHeader}
+        filter={() => {}}
         Cells={TestCells}
       />
       <Heading>Long Rowmance</Heading>
