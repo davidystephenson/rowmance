@@ -1,4 +1,4 @@
-import { TableHeadProps, Thead } from '@chakra-ui/react'
+import { TableHeadProps, Thead, useColorModeValue } from '@chakra-ui/react'
 import { ComponentType, forwardRef } from 'react'
 import { ContextProp } from 'react-virtuoso'
 
@@ -11,9 +11,13 @@ const FirstRowmance = forwardRef<
 >((props, ref) => {
   const { TableHead, ...rest } = props
   const TableHeadView = TableHead ?? Thead
+  const borderColor = useColorModeValue('700', '100')
+  const innerShadow = `inset 0px 0px 0px 10000px var(--chakra-colors-chakra-body-bg)`
+  const outerShadow = `0 0.8px 0.8px -0.8px var(--chakra-colors-gray-${borderColor})`
+  const boxShadow = `${innerShadow}, ${outerShadow}`
   return (
     <TableHeadView
-      boxShadow='inset 0px 0px 0px 10000px var(--chakra-colors-chakra-body-bg), 0 1px 1px -1px gray'
+      boxShadow={boxShadow}
       zIndex='1 !important'
       {...rest}
       ref={ref}

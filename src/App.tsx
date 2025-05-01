@@ -6,6 +6,7 @@ import TestCells from './TestCells'
 import VirtualTable from './virtual-table'
 import { TableVirtuoso } from 'react-virtuoso'
 import TestHeader from './TestHeader'
+import ColorMode from './ColorMode'
 
 const config: ThemeConfig = {
   initialColorMode: 'system'
@@ -21,6 +22,7 @@ export default function App() {
   })
   return (
     <ChakraProvider theme={theme}>
+      <ColorMode />
       <Heading>Table</Heading>
       <TestTable />
       <Heading>Rowmance</Heading>
