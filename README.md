@@ -35,10 +35,7 @@ export default function App() {
   const [filtered, setFiltered] = useState(rows)
   function filter(props: { query?: string }) {
     const filtered = rows.filter(row => {
-      if (!props.query) {
-        return true
-      }
-      return row.name.includes(props.query)
+      return !props.query || row.name.includes(props.query)
     })
     setFiltered(filtered)
   }
