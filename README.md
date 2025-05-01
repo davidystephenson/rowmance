@@ -10,6 +10,8 @@ A virtual table React and Chakra UI v2 component with search.
 ## Usage
 
 ```tsx
+import Rowmance from 'romance'
+import { ChakraProvider, Td } from '@chakra-ui/react'
 
 const rows = Array.from({ length: 10000 }, (_, i) => {
   return {
@@ -42,7 +44,7 @@ export default function App() {
   }
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider>
       <Rowmance
         columns={['Name', 'Phone']}
         data={filtered}
