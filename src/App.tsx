@@ -8,6 +8,7 @@ import { useState } from 'react'
 import LongRowmance from './LongRowmance'
 import ThemeTable from './ThemeTable'
 import ThemeInput from './ThemeInput'
+import InputRobe from './InputRobe'
 const config: ThemeConfig = {
   initialColorMode: 'system'
 }
@@ -46,7 +47,7 @@ export default function App() {
         filter={filter}
         Cells={TestCells}
         style={{ height: '300px' }}
-        Input={ThemeInput}
+        Input={InputRobe}
         crush
       />
       <Heading>LongRowmance</Heading>
