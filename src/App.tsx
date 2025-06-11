@@ -1,14 +1,9 @@
-import { ChakraProvider, extendTheme, ThemeConfig, Heading } from '@chakra-ui/react'
+import { ChakraProvider, extendTheme, ThemeConfig } from '@chakra-ui/react'
 import Rowmance from './Rowmance'
-import TestTable from './TestTable'
 import TestCells from './TestCells'
-import { TableVirtuoso } from 'react-virtuoso'
-import ColorMode from './ColorMode'
 import { useState } from 'react'
-import LongRowmance from './LongRowmance'
-import ThemeTable from './ThemeTable'
-import ThemeInput from './ThemeInput'
 import InputRobe from './InputRobe'
+import FirstColumnGrand from './FirstColumnGrand'
 const config: ThemeConfig = {
   initialColorMode: 'system'
 }
@@ -37,17 +32,27 @@ export default function App() {
 
   return (
     <ChakraProvider theme={theme}>
-      <ColorMode />
+      {/* <ColorMode />
       <Heading>Table</Heading>
-      <TestTable />
-      <Heading>Rowmance</Heading>
+      <TestTable /> */}
+      {/* <Heading>Rowmance </Heading> */}
       <Rowmance
+        Cells={TestCells}
+        columns={['Name', 'Email']}
+        crush
+        data={filtered}
+        filter={filter}
+        Input={InputRobe}
+        Th={FirstColumnGrand}
+        style={{ height: '300px' }}
+      />
+      {/* <Rowmance
         columns={['Name', 'Email']}
         data={filtered}
         filter={filter}
         Cells={TestCells}
         style={{ height: '300px' }}
-        Input={InputRobe}
+        Input={ThemeInput}
         crush
       />
       <Heading>LongRowmance</Heading>
@@ -75,7 +80,7 @@ export default function App() {
             </>
           )}
         />
-      </div>
+      </div> */}
     </ChakraProvider>
   )
 }

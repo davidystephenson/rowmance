@@ -19,7 +19,6 @@ const rowmanceContext = contextCreator({
     const queried = useMemo(() => query.length > 0, [query])
     const { crush, columns, filter } = props
     const IconButtonView = props.IconButton ?? IconButton
-    console.log('props.Input', props.Input)
     const InputView = props.Input ?? Input
     const ThView = props.Th ?? Th
     const clearQuery = useCallback(() => {

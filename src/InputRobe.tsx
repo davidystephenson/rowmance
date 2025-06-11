@@ -5,14 +5,14 @@ export type InputRobeProps = InputProps & {
   control?: FormControlProps
   error?: ReactNode
   label?: string
-  right?: ReactNode
+  rightElement?: ReactNode | undefined | null
 }
 
 const InputRobe = forwardRef<
 HTMLInputElement,
 InputRobeProps
 >((props, ref) => {
-  const { type, error, label, right, ...restProps } = props
+  const { type, error, label, rightElement: right, ...restProps } = props
   const dateField = type === 'date'
   const inputType = dateField ? 'text' : type
   const invalid = error != null

@@ -1,6 +1,6 @@
 import { JSX } from 'react'
 import RowmanceSearch from './RowmanceSearch'
-import TableColumnsView from './RowmanceColumns'
+import RowmanceColumns from './RowmanceColumns'
 import rowmanceContext from './rowmanceContext'
 import { Tr } from '@chakra-ui/react'
 
@@ -10,12 +10,12 @@ export default function FirstRowmance (): JSX.Element {
   return (
     <>
       <Tr>
-        <rowmance.Th colSpan={rowmance.columns.length} {...crush}>
+        <rowmance.Th index={0} colSpan={rowmance.columns.length} {...crush}>
           <RowmanceSearch />
         </rowmance.Th>
       </Tr>
       <Tr>
-        <TableColumnsView />
+        <RowmanceColumns />
       </Tr>
     </>
   )

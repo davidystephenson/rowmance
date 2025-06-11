@@ -5,7 +5,6 @@ import RowmanceClear from './RowmanceClear'
 
 export default function RowmanceSearch(): JSX.Element {
   const rowmance = rowmanceContext.use()
-  console.log('rowmance.Input', rowmance.Input)
   return (
     <FormControl>
       <InputGroup>

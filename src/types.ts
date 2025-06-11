@@ -12,13 +12,17 @@ export type RowmanceTableProps <Row> = {
   TableRow?: ComponentType<ItemProps<Row> & ContextProp<unknown>>
 } & TableVirtuosoProps<Row, unknown>
 
+export type RowmanceColumnProps = TableColumnHeaderProps & {
+  index: number
+}
+
 export type RowmanceProviderProps = {
   columns: ReactNode[]
   crush?: boolean
   filter: (props: { query?: string | undefined }) => void
   IconButton?: ComponentType<IconButtonProps>
-  Input?: ComponentType<InputProps>
-  Th?: ComponentType<TableColumnHeaderProps>
+  Input?: ComponentType<InputProps> 
+  Th?: ComponentType<RowmanceColumnProps>
 }
 
 export type RowmanceProps <Row> = RowmanceTableProps<Row> & RowmanceProviderProps
