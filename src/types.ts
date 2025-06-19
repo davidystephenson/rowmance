@@ -1,9 +1,9 @@
-import { ComponentType, JSX, ReactNode } from "react"
+import { ComponentType, ReactNode } from "react"
 import { ContextProp, TableVirtuosoProps, ItemProps, TableProps, ScrollerProps, TableBodyProps } from "react-virtuoso"
 import { IconButtonProps, TableHeadProps, InputProps, TableColumnHeaderProps } from "@chakra-ui/react"
 
 export type RowmanceTableProps <Row> = {
-  Cells: (props: { index: number, row: Row }) => JSX.Element
+  Cells: ComponentType<{index: number, row: Row}>
   data: Row[]
   Scroller?: ComponentType<ScrollerProps>
   Table?: ComponentType<TableProps  & ContextProp<unknown>>
