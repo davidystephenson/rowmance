@@ -17,14 +17,14 @@ const rowmanceContext = contextCreator({
       setAutoFocus(false)
     }, [])
     const queried = useMemo(() => query.length > 0, [query])
-    const { crush, columns, filter } = props
+    const { crush, columns, onSearch } = props
     const IconButtonView = props.IconButton ?? IconButton
     const InputView = props.Input ?? Input
     const ThView = props.Th ?? Th
     const clearQuery = useCallback(() => {
       setQuery('')
-      filter({ query: undefined })
-    }, [filter])
+      onSearch({ query: undefined })
+    }, [onSearch])
     const focus = useCallback(() => {
       inputRef.current?.focus()
     }, [])
@@ -38,9 +38,9 @@ const rowmanceContext = contextCreator({
     const handleQueryChange = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
       const lower = event.target.value.toLowerCase()
       setQuery(lower)
-      filter({ query: lower })
+      onSearch({ query: lower })
       setAutoFocus(true)
-    }, [filter])
+    }, [onSearch])
     const handleBlur = useCallback(() => {
       setAutoFocus(false)
       setFocused(false)
@@ -55,7 +55,7 @@ const rowmanceContext = contextCreator({
       columns,
       crush,
       inputRef,
-      filter,
+      onSearch,
       focus,
       handleBlur,
       handleFocus,
@@ -73,7 +73,7 @@ const rowmanceContext = contextCreator({
       columns,
       crush,
       inputRef,
-      filter,
+      onSearch,
       focus,
       handleBlur,
       handleFocus,

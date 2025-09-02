@@ -19,7 +19,7 @@ export type RowmanceColumnProps = TableColumnHeaderProps & {
 export type RowmanceProviderProps = {
   columns: ReactNode[]
   crush?: boolean
-  filter: (props: { query?: string | undefined }) => void
+  onSearch: (props: { query?: string | undefined }) => void
   IconButton?: ComponentType<IconButtonProps>
   Input?: ComponentType<InputProps> 
   Th?: ComponentType<RowmanceColumnProps>

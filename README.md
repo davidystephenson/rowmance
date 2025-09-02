@@ -33,7 +33,7 @@ export default function Contact(props: {
 
 export default function App() {
   const [filtered, setFiltered] = useState(rows)
-  function filter(props: { query?: string }) {
+  function handleSearch(props: { query?: string }) {
     const filtered = rows.filter(row => {
       return !props.query || row.name.includes(props.query)
     })
@@ -45,7 +45,7 @@ export default function App() {
       <Rowmance
         columns={['Name', 'Phone']}
         data={filtered}
-        filter={filter}
+        onSearch={handleSearch}
         Cells={TestCells}
         style={{ height: '300px' }}
       />
