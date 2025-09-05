@@ -11,7 +11,6 @@ const rowmanceContext = contextCreator({
     const [autoFocus, setAutoFocus] = useState(true)
     const [query, setQuery] = useState('')
     const [focused, setFocused] = useState(false)
-
     useEffect(() => {
       inputRef.current?.blur()
       setAutoFocus(false)
@@ -36,6 +35,9 @@ const rowmanceContext = contextCreator({
       }
     }, [clearQuery])
     const handleQueryChange = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
+      if (props.debug === true) {
+        console.debug('Rowmance handleQueryChange', event.target.value)
+      }
       const lower = event.target.value.toLowerCase()
       setQuery(lower)
       onSearch({ query: lower })

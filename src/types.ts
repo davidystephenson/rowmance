@@ -3,8 +3,9 @@ import { ContextProp, TableVirtuosoProps, ItemProps, TableProps, ScrollerProps, 
 import { IconButtonProps, TableHeadProps, InputProps, TableColumnHeaderProps } from "@chakra-ui/react"
 
 export type RowmanceTableProps <Row> = {
-  Cells: ComponentType<{index: number, row: Row}>
+  Cells: ComponentType<{debug?: boolean, index: number, row: Row}>
   data: Row[]
+  debug?: boolean
   Scroller?: ComponentType<ScrollerProps>
   Table?: ComponentType<TableProps  & ContextProp<unknown>>
   TableBody?: ComponentType<TableBodyProps>
@@ -19,6 +20,7 @@ export type RowmanceColumnProps = TableColumnHeaderProps & {
 export type RowmanceProviderProps = {
   columns: ReactNode[]
   crush?: boolean
+  debug?: boolean
   onSearch: (props: { query?: string | undefined }) => void
   IconButton?: ComponentType<IconButtonProps>
   Input?: ComponentType<InputProps> 

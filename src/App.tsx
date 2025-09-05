@@ -41,6 +41,7 @@ export default function App() {
         columns={['Name', 'Email']}
         crush
         data={filtered}
+        debug
         onSearch={filter}
         Input={InputRobe}
         Th={FirstColumnGrand}

@@ -9,6 +9,7 @@ import { RowmanceTableProps } from './types'
 export default function RowmanceTable<Row>(props: RowmanceTableProps<Row>): JSX.Element {
   const {
     Cells: CellsProp,
+    debug,
     Scroller: ScrollerProp,
     Table: TableProp,
     TableBody: TableBodyProp,
@@ -31,7 +32,7 @@ export default function RowmanceTable<Row>(props: RowmanceTableProps<Row>): JSX.
     return <RowmanceThead TableHead={TableHeadView} {...props} ref={ref} />
   })
   function itemContent(index: number, row: Row) {
-    return <CellsProp index={index} row={row} />
+    return <CellsProp debug={debug} index={index} row={row} />
   }
   const tableComponents: TableComponents<Row> = {
     Scroller: ScrollerForward,
