@@ -4,7 +4,7 @@ export default function TestCells(props: {
   debug?: boolean
   row: { name: string, email: string }
 }) {
-  if (props.debug) {
+  if (props.debug === true) {
     console.log('props', props)
   }
   return (
